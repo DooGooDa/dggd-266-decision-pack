@@ -39,7 +39,12 @@ BASE = {
     "beds": 505,
     "admissions": 31000,
     "alos": 5.2,
-    "nurse_fte": 268,           # HCRIS S-3 + AHA
+    # FTE derivation: HCRIS S-3 Part V (FTE Summary) total employees = 671
+    # AHA benchmark: nursing staff is ~40% of total hospital FTE
+    # → 671 × 0.40 = 268.4 ≈ 268 (total nursing FTE, direct + indirect)
+    # HCRIS S-3 Lines 00801-00806 = 116 (nursing direct only)
+    # This analysis uses total nursing FTE (268) for comprehensive cost modeling
+    "nurse_fte": 268,
     "rn_salary": 82000,         # BLS WI 2024
     "agency_rate": 59.28,       # HCRIS S-3 Part II ($/hr)
     "internal_nurse_rate": 39.0,  # internal RN fully-loaded ($/hr)
