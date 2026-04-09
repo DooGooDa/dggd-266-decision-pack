@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "simulation_iterations": 10000,
+    "hospital": "800-bed academic medical center",
+    "annual_admissions": 25000,
+    "baseline_ftes": 31.6,
+    "baseline_annual_nursing_cost": 3326062.0,
+    "nurse_wage": 37.5,
+    "value_per_qaly": 50000
+  },
+  "scenarios": {
+    "A": {
+      "name": "Status Quo",
+      "total_cost_mean": 21248560.0,
+      "total_cost_p5": 14900583.0,
+      "total_cost_p95": 28507340.0,
+      "nursing_cost_mean": 3325474.0,
+      "safety_cost_mean": 17599086.0,
+      "adverse_events_mean": 801.1,
+      "los_mean": 4.5,
+      "burnout_mean": 0.38,
+      "qaly_loss_mean": 32.0
+    },
+    "B": {
+      "name": "10% Staffing Increase",
+      "total_cost_mean": 20650662.0,
+      "total_cost_p5": 14722971.0,
+      "total_cost_p95": 27424904.0,
+      "nursing_cost_mean": 3658022.0,
+      "safety_cost_mean": 16366240.0,
+      "adverse_events_mean": 745.0,
+      "los_mean": 4.32,
+      "burnout_mean": 0.338,
+      "qaly_loss_mean": 29.8
+    },
+    "C": {
+      "name": "Night Shift Addition",
+      "total_cost_mean": 22051886.0,
+      "total_cost_p5": 15697923.0,
+      "total_cost_p95": 29297016.0,
+      "nursing_cost_mean": 3325474.0,
+      "safety_cost_mean": 17539090.0,
+      "adverse_events_mean": 798.4,
+      "los_mean": 4.5,
+      "burnout_mean": 0.375,
+      "qaly_loss_mean": 31.9
+    }
+  },
+  "cea": {
+    "B": {
+      "delta_cost": -597899.0,
+      "delta_adverse_events": 56.1,
+      "delta_qaly": 2.24,
+      "icer": -266346.0,
+      "cost_effective": true
+    },
+    "C": {
+      "delta_cost": 803326.0,
+      "delta_adverse_events": 2.7,
+      "delta_qaly": 0.11,
+      "icer": 7351076.0,
+      "cost_effective": false
+    }
+  },
+  "bia": {
+    "B": {
+      "additional_annual_cost": -597898.5250278041,
+      "cost_per_admission": -23.915941001112163,
+      "cost_per_bed": -747.373156284755,
+      "cost_per_nurse_added": -33216.58472376689
+    },
+    "C": {
+      "additional_annual_cost": 803325.5812485665,
+      "cost_per_admission": 32.13302324994266,
+      "cost_per_bed": 1004.1569765607081,
+      "cost_per_nurse_added": 53555.03874990444
+    }
+  },
+  "recommendation": {
+    "preferred": "B",
+    "reasoning": "Scenario B provides best cost-effectiveness at $-266,346/QALY"
+  },
+  "what_changes_my_mind": {
+    "salary_threshold_breaks_B": "45% wage increase",
+    "turnover_threshold_breaks_B": "38% turnover rate",
+    "ae_cost_threshold_breaks_B": "$8K per adverse event",
+    "ae_cost_threshold_breaks_C": "$10K per adverse event",
+    "night_admission_threshold_breaks_C": "12% of admissions",
+    "icer_threshold": "$50,000"
+  },
+  "data_sources": [
+    "BLS Occupational Employment Statistics (RN wages, WI 2023)",
+    "AHRQ Patient Safety Indicators methodology",
+    "NASEM Future of Nursing 2020-2030",
+    "Literature: Needleman et al. 2011; Aiken et al. 2014",
+    "CMS HCRIS Hospital Cost Reports (hospital scale reference)"
+  ],
+  "caveats": [
+    "Analysis uses industry benchmarks; exact UW Health data requires HCRIS raw file processing",
+    "QALY weights = standard health economics methodology ($50K/QALY threshold)",
+    "Adverse event costs from literature averages; institutional data preferred",
+    "Monte Carlo: log-normal for cost parameters; actual distributions may vary"
+  ]
+}
